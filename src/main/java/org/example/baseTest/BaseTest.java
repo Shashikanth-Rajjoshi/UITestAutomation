@@ -20,7 +20,8 @@ public class BaseTest {
 
     @BeforeTest
     public void setUp() throws IOException {
-        PropertyConfigurator.configure(System.getProperty("user.dir")+"\\log4j\\log4j.properties");
+        //Getting logger properties file
+        PropertyConfigurator.configure(System.getProperty("user.dir")+"\\src\\main\\resources\\log4j\\log4j.properties");
         if (getConfigValue("browser").equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
@@ -32,7 +33,7 @@ public class BaseTest {
         }
     }
 
-    public String getConfigValue(String key) throws IOException {
+    public static String getConfigValue(String key) throws IOException {
         FileReader fr = new FileReader(System.getProperty("user.dir")+"/testData/config.properties");
         Properties pr = new Properties();
         pr.load(fr);
@@ -42,6 +43,7 @@ public class BaseTest {
 
     public void launchLoginPage() throws IOException {
         driver.manage().deleteAllCookies();
+        driver.manage().window().maximize();
         String url = getConfigValue("url");
         driver.get(url);
         logger.info("Launching Login Page with URL: "+url);
