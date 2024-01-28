@@ -77,4 +77,15 @@ public class LoginPage {
         logger.info("Verified currenturl: "+currenturl+"and Expected url: "+expectedurl);
         System.out.println("Verified currenturl: "+currenturl+" Expected url: "+expectedurl);
     }
+
+    public LoginPage loginWithUserNameAndPwd(String userLogin, String password) throws IOException, InterruptedException {
+        Thread.sleep(4000);
+        txtBxLogin.sendKeys(userLogin);
+        log.info("Entered User Login Details: "+ userLogin);
+        clickOnNext();
+        Thread.sleep(4000);
+        txtBxPwd.sendKeys(password);
+        log.info("Entered User Pwd Details: ***** ");
+        return this;
+    }
 }

@@ -1,5 +1,15 @@
-Getting Config value for key: browser
-Launching Chrome Browser
-Getting Config value for key: url
-Launching Login Page with URL: https://www.zoho.com/
-Closing The driver
+2024-01-28 19:51:33,110 +0530 [main] INFO  (ReadConfig.java:17) - Getting Config value for key: browser
+2024-01-28 19:51:36,314 +0530 [main] INFO  (BaseTest.java:33) - Launching Chrome Browser
+2024-01-28 19:51:36,510 +0530 [main] INFO  (ReadConfig.java:17) - Getting Config value for key: url
+2024-01-28 19:51:52,465 +0530 [main] INFO  (BaseTest.java:46) - Launching Login Page with URL: https://www.zoho.com/
+2024-01-28 19:51:57,559 +0530 [main] INFO  (LoginPage.java:55) - Clicked on Sign in Button
+2024-01-28 19:52:01,574 +0530 [main] INFO  (ReadConfig.java:17) - Getting Config value for key: UserLogin
+2024-01-28 19:52:01,760 +0530 [main] INFO  (ReadConfig.java:17) - Getting Config value for key: UserLogin
+2024-01-28 19:52:01,764 +0530 [main] INFO  (LoginPage.java:42) - Entered User Login Details: shashirajjoshi@gmail.com
+2024-01-28 19:52:01,890 +0530 [main] INFO  (LoginPage.java:48) - Clicked on Next Button
+2024-01-28 19:52:05,936 +0530 [main] INFO  (ReadConfig.java:17) - Getting Config value for key: UserPwd
+2024-01-28 19:52:06,191 +0530 [main] INFO  (LoginPage.java:62) - Entered User Pwd Details: ***** 
+2024-01-28 19:52:10,496 +0530 [main] INFO  (LoginPage.java:69) - Clicked on Sign in Button
+2024-01-28 19:52:20,025 +0530 [main] INFO  (ReadConfig.java:17) - Getting Config value for key: url
+2024-01-28 19:52:20,033 +0530 [main] INFO  (LoginPage.java:77) - Verified currenturl: https://www.zoho.com/all-products.htmland Expected url: https://www.zoho.com/all-products.html
+2024-01-28 19:52:20,619 +0530 [main] INFO  (BaseTest.java:53) - Closing The driver

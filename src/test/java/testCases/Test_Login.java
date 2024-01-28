@@ -8,10 +8,19 @@ import java.io.IOException;
 
 public class Test_Login extends BaseTest {
 
-    @Test
+    @Test(enabled = true)
     public void loginToApplication() throws IOException, InterruptedException {
         launchLoginPage();
         LoginPage lg = new LoginPage(driver);
         lg.clickOnSignIn().enterUserLogin().clickOnNext().enterUserPwd().clickOnLogIn().verifyNavigateToProductsPage();
+    }
+
+    /*This Testcase is to demonstrate capturing of Screenshot for Failure and
+     this needs to be run from testng to get extent report and screenshots*/
+    @Test(enabled = true)
+    public void loginToApplicationWithUserNameAndPassword() throws IOException, InterruptedException {
+        launchLoginPage();
+        LoginPage lg = new LoginPage(driver);
+        lg.clickOnSignIn().loginWithUserNameAndPwd("wrongUser@gmail.com","pwd").clickOnLogIn().verifyNavigateToProductsPage();
     }
 }
