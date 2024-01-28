@@ -6,19 +6,23 @@ import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
+import static org.example.utilities.ReadConfig.getConfigValue;
+
 public class BaseTest {
 
     public static WebDriver driver;
     public static final Logger logger = Logger.getLogger(BaseTest.class);
 
-    @BeforeTest
+    @BeforeMethod
     public void setUp() throws IOException {
         //Getting logger properties file
         PropertyConfigurator.configure(System.getProperty("user.dir")+"\\src\\main\\resources\\log4j\\log4j.properties");
@@ -33,14 +37,6 @@ public class BaseTest {
         }
     }
 
-    public static String getConfigValue(String key) throws IOException {
-        FileReader fr = new FileReader(System.getProperty("user.dir")+"/testData/config.properties");
-        Properties pr = new Properties();
-        pr.load(fr);
-        logger.info("Getting Config value for key: "+key);
-        return pr.getProperty(key);
-    }
-
     public void launchLoginPage() throws IOException {
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
@@ -49,7 +45,7 @@ public class BaseTest {
         logger.info("Launching Login Page with URL: "+url);
     }
 
-    @AfterTest
+    @AfterMethod
     public void tearDown(){
         driver.close();
         logger.info("Closing The driver");

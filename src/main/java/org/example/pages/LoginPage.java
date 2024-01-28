@@ -10,8 +10,8 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-import static org.example.baseTest.BaseTest.getConfigValue;
 import static org.example.baseTest.BaseTest.logger;
+import static org.example.utilities.ReadConfig.getConfigValue;
 
 public class LoginPage {
     public static Logger log = Logger.getLogger(LoginPage.class);
