@@ -40,7 +40,7 @@ public class ExtentListener implements ITestListener {
 
         //configuration to change look and feel of report
         htmlReporter.config().setDocumentTitle("Extent Listener Report Demo");
-        htmlReporter.config().setReportName("This is my First Report");
+        htmlReporter.config().setReportName("UI Test Automation Framework Test Report");
         htmlReporter.config().setTheme(Theme.DARK);
 
 
