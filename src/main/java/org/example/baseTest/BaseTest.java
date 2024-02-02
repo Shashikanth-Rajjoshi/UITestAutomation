@@ -3,17 +3,18 @@ package org.example.baseTest;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.annotations.*;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 
 import static org.example.utilities.ReadConfig.getConfigValue;
@@ -67,6 +68,14 @@ public class BaseTest {
 
         //step3: copy image file to destination
         FileUtils.copyFile(src, dest);
+    }
+
+    public void waitUntilElementIsVisible(WebElement element) throws IOException {
+        FluentWait wait = new FluentWait(driver).withTimeout(Duration.ofSeconds(10))
+                .pollingEvery(Duration.ofSeconds(3L)).
+                ignoring(NoSuchElementException.class).
+                ignoring(StaleElementReferenceException.class);
+        wait.until(ExpectedConditions.visibilityOf(element));
     }
 
 }

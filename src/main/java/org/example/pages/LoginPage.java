@@ -1,5 +1,6 @@
 package org.example.pages;
 
+import org.example.baseTest.BaseTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,6 +16,7 @@ import static org.example.utilities.ReadConfig.getConfigValue;
 
 public class LoginPage {
     public static Logger log = Logger.getLogger(LoginPage.class);
+    BaseTest baseTest = new BaseTest();
     public WebDriver driver;
     public LoginPage(WebDriver driver){
         this.driver = driver;
@@ -37,34 +39,35 @@ public class LoginPage {
     public WebElement btnLogin;
 
     public LoginPage enterUserLogin() throws IOException, InterruptedException {
-        Thread.sleep(4000);
+        baseTest.waitUntilElementIsVisible(txtBxLogin);
         txtBxLogin.sendKeys(getConfigValue("UserLogin"));
         log.info("Entered User Login Details: "+ getConfigValue("UserLogin"));
         return this;
     }
 
     public LoginPage clickOnNext() throws IOException {
+        baseTest.waitUntilElementIsVisible(btnNext);
         btnNext.click();
         log.info("Clicked on Next Button");
         return this;
     }
 
     public LoginPage clickOnSignIn() throws IOException, InterruptedException {
-        Thread.sleep(4000);
+        baseTest.waitUntilElementIsVisible(btnSignIn);
         btnSignIn.click();
         log.info("Clicked on Sign in Button");
         return this;
     }
 
     public LoginPage enterUserPwd() throws IOException, InterruptedException {
-        Thread.sleep(4000);
+        baseTest.waitUntilElementIsVisible(txtBxPwd);
         txtBxPwd.sendKeys(getConfigValue("UserPwd"));
         log.info("Entered User Pwd Details: ***** ");
         return this;
     }
 
     public LoginPage clickOnLogIn() throws IOException, InterruptedException {
-        Thread.sleep(4000);
+        baseTest.waitUntilElementIsVisible(btnLogin);
         btnLogin.click();
         log.info("Clicked on Sign in Button");
         return this;
@@ -79,11 +82,11 @@ public class LoginPage {
     }
 
     public LoginPage loginWithUserNameAndPwd(String userLogin, String password) throws IOException, InterruptedException {
-        Thread.sleep(4000);
+        baseTest.waitUntilElementIsVisible(txtBxLogin);
         txtBxLogin.sendKeys(userLogin);
         log.info("Entered User Login Details: "+ userLogin);
         clickOnNext();
-        Thread.sleep(4000);
+        baseTest.waitUntilElementIsVisible(txtBxPwd);
         txtBxPwd.sendKeys(password);
         log.info("Entered User Pwd Details: ***** ");
         return this;
