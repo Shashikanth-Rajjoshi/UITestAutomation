@@ -23,39 +23,20 @@ public class LoginPage {
         PageFactory.initElements(driver,this);
     }
 
-    @FindBy(id="login_id")
+    @FindBy(name="username")
     public WebElement txtBxLogin;
 
-    @FindBy(id="password")
+    @FindBy(name="password")
     public WebElement txtBxPwd;
 
-    @FindBy(id="nextbtn")
-    public WebElement btnNext;
 
-    @FindBy(xpath="//a[contains(text(),'Sign in')]")
-    public WebElement btnSignIn;
-
-    @FindBy(xpath = "//*[@id='nextbtn']//span[text()='Sign in']")
+    @FindBy(xpath = "//button[@class='oxd-button oxd-button--medium oxd-button--main orangehrm-login-button']")
     public WebElement btnLogin;
 
     public LoginPage enterUserLogin() throws IOException, InterruptedException {
         baseTest.waitUntilElementIsVisible(txtBxLogin);
         txtBxLogin.sendKeys(getConfigValue("UserLogin"));
         log.info("Entered User Login Details: "+ getConfigValue("UserLogin"));
-        return this;
-    }
-
-    public LoginPage clickOnNext() throws IOException {
-        baseTest.waitUntilElementIsVisible(btnNext);
-        btnNext.click();
-        log.info("Clicked on Next Button");
-        return this;
-    }
-
-    public LoginPage clickOnSignIn() throws IOException, InterruptedException {
-        baseTest.waitUntilElementIsVisible(btnSignIn);
-        btnSignIn.click();
-        log.info("Clicked on Sign in Button");
         return this;
     }
 
@@ -72,10 +53,10 @@ public class LoginPage {
         log.info("Clicked on Sign in Button");
         return this;
     }
-    public void verifyNavigateToProductsPage() throws IOException, InterruptedException {
+    public void verifyNavigateToDashboardPage() throws IOException, InterruptedException {
         Thread.sleep(5000);
         String currenturl = driver.getCurrentUrl();
-        String expectedurl = getConfigValue("url")+"all-products.html";
+        String expectedurl = getConfigValue("url")+"web/index.php/dashboard/index";
         Assert.assertEquals(currenturl,expectedurl);
         logger.info("Verified currenturl: "+currenturl+"and Expected url: "+expectedurl);
         System.out.println("Verified currenturl: "+currenturl+" Expected url: "+expectedurl);
@@ -85,10 +66,10 @@ public class LoginPage {
         baseTest.waitUntilElementIsVisible(txtBxLogin);
         txtBxLogin.sendKeys(userLogin);
         log.info("Entered User Login Details: "+ userLogin);
-        clickOnNext();
         baseTest.waitUntilElementIsVisible(txtBxPwd);
         txtBxPwd.sendKeys(password);
         log.info("Entered User Pwd Details: ***** ");
+        clickOnLogIn();
         return this;
     }
 }

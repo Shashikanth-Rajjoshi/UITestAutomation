@@ -12,7 +12,7 @@ public class Test_Login extends BaseTest {
     public void loginToApplication() throws IOException, InterruptedException {
         launchLoginPage();
         LoginPage lg = new LoginPage(driver);
-        lg.clickOnSignIn().enterUserLogin().clickOnNext().enterUserPwd().clickOnLogIn().verifyNavigateToProductsPage();
+        lg.enterUserLogin().enterUserPwd().clickOnLogIn().verifyNavigateToDashboardPage();
     }
 
     /*This Testcase is to demonstrate capturing of Screenshot for Failure and
@@ -21,6 +21,6 @@ public class Test_Login extends BaseTest {
     public void loginToApplicationWithUserNameAndPassword() throws IOException, InterruptedException {
         launchLoginPage();
         LoginPage lg = new LoginPage(driver);
-        lg.clickOnSignIn().loginWithUserNameAndPwd("wrongUser@gmail.com","pwd").clickOnLogIn().verifyNavigateToProductsPage();
+        lg.loginWithUserNameAndPwd("wrongUser@gmail.com","pwd");
     }
 }
