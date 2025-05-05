@@ -21,6 +21,6 @@ public class Test_Login extends BaseTest {
     public void loginToApplicationWithUserNameAndPassword() throws IOException, InterruptedException {
         launchLoginPage();
         LoginPage lg = new LoginPage(driver);
-        lg.loginWithUserNameAndPwd("wrongUser@gmail.com","pwd");
+        lg.loginWithUserNameAndPwd("wrongUser@gmail.com","pwd").verifyNavigateToDashboardPage();
     }
 }

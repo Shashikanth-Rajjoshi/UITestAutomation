@@ -30,7 +30,7 @@ public class LoginPage {
     public WebElement txtBxPwd;
 
 
-    @FindBy(xpath = "//button[@class='oxd-button oxd-button--medium oxd-button--main orangehrm-login-button']")
+    @FindBy(xpath = "//button[@type='submit']")
     public WebElement btnLogin;
 
     public LoginPage enterUserLogin() throws IOException, InterruptedException {
