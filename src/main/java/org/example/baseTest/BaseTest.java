@@ -3,11 +3,16 @@ package org.example.baseTest;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.apache.xmlbeans.impl.xb.xsdschema.Public;
+import org.example.pages.DashboardPage;
+import org.example.pages.LoginPage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import org.apache.commons.io.FileUtils;
 
@@ -76,6 +81,21 @@ public class BaseTest {
                 ignoring(NoSuchElementException.class).
                 ignoring(StaleElementReferenceException.class);
         wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public void loginAsAdmin() throws IOException, InterruptedException {
+        launchLoginPage();
+        LoginPage lg = new LoginPage(driver);
+        lg.enterUserLogin().enterUserPwd().clickOnLogIn();
+        waitForPageToLoad();
+    }
+
+    public void waitForPageToLoad() {
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(20));
+        ExpectedCondition<Boolean> pageLoadCondition = driver ->
+                ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+
+        wait.until(pageLoadCondition);
     }
 
 }
